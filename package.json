@@ -1,8 +1,8 @@
 {
-  "name": "dd-new-node",
+  "name": "dd-dailystock-node",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://dunghlt2002.github.io/daily-stock-node/",
+  "homepage": "https://github.com/dunghlt2002/dd-dailystock-node",
   "main": "index.js",
   "scripts": {
     "start": "nodemon –watch –exec babel-node server.js"
