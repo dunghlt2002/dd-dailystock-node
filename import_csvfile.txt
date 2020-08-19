@@ -1,0 +1,4 @@
+COPY csv_data(transactiondate,transactiontype,symbol,quantity,price)
+FROM 'C:\_temp\aa.csv'
+DELIMITER ','
+CSV HEADER;
