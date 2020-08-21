@@ -5,7 +5,7 @@
   "homepage": "https://github.com/dunghlt2002/dd-dailystock-node",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon –watch –exec babel-node server.js"
+    "start": "node –watch –exec babel-node server.js"
   },
   "predeploy": "npm run build",
   "deploy": "gh-pages -d build",
