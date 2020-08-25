@@ -147,3 +147,6 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+// dinh de trong .env nhung hinh nhu khong can luon
+// DATABASE_URL=postgres://ngetumvsyuzvwq:167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693@ec2-54-197-254-117.compute-1.amazonaws.com:5432/d2vdr8rjjghnmh

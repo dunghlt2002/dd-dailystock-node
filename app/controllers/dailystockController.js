@@ -47,6 +47,7 @@ exports.create = (req, res) => {
   // Create a transaction
   const newTransaction = {
     title: req.body.title,
+    timeframe: req.body.timeframe,
     symbolcode: req.body.symbolcode,
     entrypoint: req.body.entrypoint,
     exitpoint: req.body.exitpoint,
@@ -55,7 +56,6 @@ exports.create = (req, res) => {
     stocolor: req.body.stocolor,
     macdcolor: req.body.macdcolor,
     macd_htf: req.body.macd_htf,
-    s_image: req.body.s_image,
     b_image: req.body.b_image,
     s_image: req.body.s_image
   };
