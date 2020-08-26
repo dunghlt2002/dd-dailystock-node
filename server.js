@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to DD Project- Nodejs" });
+  res.json({ message: "Welcome to DD Daily Task- Nodejs" });
 });
 
 app.use(function (req, res, next) {
