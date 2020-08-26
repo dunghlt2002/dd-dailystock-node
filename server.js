@@ -6,9 +6,9 @@ const multer = require("multer");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:3000/"
+  // origin: "http://localhost:3000/"
   // origin: "https://dd-react.herokuapp.com"
-  // origin: process.env.CLIENT_URL || process.env.CLIENT_URL2
+  origin: process.env.CLIENT_URL
 };
 
 app.use(cors(corsOptions));
