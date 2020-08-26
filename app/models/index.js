@@ -13,8 +13,10 @@ const Pool = require("pg").Pool;
 //   }
 // });
 
-var sequelize = new Sequelize(process.env.DB_NAME, 'ngetumvsyuzvwq', '167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693', {
-  host: 'ec2-54-197-254-117.compute-1.amazonaws.com',
+// '167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693'
+// 'ec2-54-197-254-117.compute-1.amazonaws.com'
+var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+  host: process.env.DB_HOST,
   dialect: 'postgres',
   pool: {
     max: 5,

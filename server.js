@@ -6,10 +6,9 @@ const multer = require("multer");
 const app = express();
 
 var corsOptions = {
-  // origin: "http://localhost:3000"
+  // origin: "http://localhost:3000/"
   // origin: "https://dd-react.herokuapp.com"
   origin: process.env.CLIENT_URL
-  
 };
 
 app.use(cors(corsOptions));
@@ -22,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to DD Daily Task- Nodejs" });
+  res.json({ message: "Welcome to DD Daily Taask - Nodejs " + process.env.CLIENT_URL + " - " + process.env.NODE_ENV});
 });
 
 app.use(function (req, res, next) {
@@ -34,7 +33,7 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
+  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
 
 //  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
@@ -149,19 +148,17 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-// dinh de trong .env nhung hinh nhu khong can luon
-// DATABASE_URL=postgres://ngetumvsyuzvwq:167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693@ec2-54-197-254-117.compute-1.amazonaws.com:5432/d2vdr8rjjghnmh
+// dinh de trong .env nhung hinh nhu khong can luon ???? 8/25/2020
+// DB_NAME = d2vdr8rjjghnmh
+// DB_USER = ngetumvsyuzvwq
+// DB_PASSWORD = 167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693
+// DB_HOST = ec2-54-197-254-117.compute-1.amazonaws.com
+// CLIENT_URL = https://dd-react.herokuapp.com
 
-// cac bien can thiet trong env
-// JWT_SECRET: '123dung'
-// CLIENT_URL: 'https://dd-react.herokuapp.com'
-// DB_NAME: 'd2vdr8rjjghnmh'
-// DB_USER: 'ngetumvsyuzvwq'
-// DB_PASSWORD: '167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693'
-// DB_HOST: 'ec2-54-197-254-117.compute-1.amazonaws.com'
 
-// CLIENT_URL: 'http://localhost:3000'
-// DB_NAME: 'ddfirstdb'
-// DB_USER: 'postgres'
-// DB_PASSWORD: '8_Xaloxalac'
-// DB_HOST: 'localhost'
+
+// DB_NAME = ddfirstdb
+// DB_USER = postgres
+// DB_PASSWORD = 8_Xaloxalac
+// DB_HOST = localhost
+// CLIENT_URL = http://localhost:3000
