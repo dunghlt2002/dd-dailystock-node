@@ -7,7 +7,8 @@ const app = express();
 
 var corsOptions = {
   // origin: "http://localhost:3000"
-  origin: "https://dd-react.herokuapp.com"
+  // origin: "https://dd-react.herokuapp.com"
+  origin: process.env.CLIENT_URL
   
 };
 
@@ -150,3 +151,18 @@ app.listen(PORT, () => {
 
 // dinh de trong .env nhung hinh nhu khong can luon
 // DATABASE_URL=postgres://ngetumvsyuzvwq:167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693@ec2-54-197-254-117.compute-1.amazonaws.com:5432/d2vdr8rjjghnmh
+
+// cac bien can thiet trong env
+// JWT_SECRET: '123dung'
+// CLIENT_URL: 'https://dd-react.herokuapp.com'
+// CLIENT_URL: 'http://localhost:3000'
+
+// DB_NAME: 'd2vdr8rjjghnmh'
+// DB_USER: 'ngetumvsyuzvwq'
+// DB_PASSWORD: '167de969b402aadbfb8a54bf54a211576e8c05cb556b27e9f7ab352b48c9a693'
+// DB_HOST: 'ec2-54-197-254-117.compute-1.amazonaws.com'
+
+// DB_NAME: 'ddfirstdb'
+// DB_USER: 'postgres'
+// DB_PASSWORD: '8_Xaloxalac'
+// DB_HOST: 'localhost'
