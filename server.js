@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to DD Daily Taask - Nodejs " + process.env.CLIENT_URL + " - " + process.env.NODE_ENV});
+  res.json({ message: "Welcome to DD Daily Task - Nodejs " + corsOptions.origin});
 });
 
 app.use(function (req, res, next) {

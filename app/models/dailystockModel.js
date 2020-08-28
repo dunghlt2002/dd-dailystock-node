@@ -9,6 +9,9 @@ module.exports = (sequelize, Sequelize) => {
       title: {
         type: Sequelize.STRING
       },
+      createdby: {
+        type: Sequelize.STRING
+      },
       symbolcode: {
         type: Sequelize.STRING
       },
@@ -61,7 +64,7 @@ module.exports = (sequelize, Sequelize) => {
     , 
     {
       freezeTableName: true, // Model tableName will be the same as the model name
-      timestamps: false,  // ON updated_at created_at
+      timestamps: true,  // ON updated_at created_at
       underscored: true   // khong tao them column customer_id
     });
    

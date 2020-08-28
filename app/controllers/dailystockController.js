@@ -35,7 +35,7 @@ exports.bulkCreate = (req, res) => {
 
 // Create and Save a new DailyStock transaction
 exports.create = (req, res) => {
-  console.log('Body ne  ' + JSON.stringify(req.body.symbolcode));
+  console.log('Body ne  ' + JSON.stringify(req.body.updated_at));
   // Validate request
   if (!req.body.symbolcode) {
     res.status(400).send({
@@ -46,9 +46,11 @@ exports.create = (req, res) => {
 
   // Create a transaction
   const newTransaction = {
+    createdby: req.body.createdby,
     title: req.body.title,
     timeframe: req.body.timeframe,
     symbolcode: req.body.symbolcode,
+    buyshort: req.body.buyshort,
     entrypoint: req.body.entrypoint,
     exitpoint: req.body.exitpoint,
     qty: req.body.qty,
@@ -57,7 +59,9 @@ exports.create = (req, res) => {
     macdcolor: req.body.macdcolor,
     macd_htf: req.body.macd_htf,
     b_image: req.body.b_image,
-    s_image: req.body.s_image
+    s_image: req.body.s_image,
+    created_at: req.body.createdAt,
+    updated_at: req.body.createdAt
   };
 
   // Save User in the database
