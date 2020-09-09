@@ -36,5 +36,7 @@ db.sequelize = sequelize;
 
 db.user_data = require("./userModel.js")(sequelize, Sequelize);
 db.dailystock_data = require("./dailystockModel.js")(sequelize, Sequelize);
+db.content_data = require("./contentModel.js")(sequelize, Sequelize);
+db.content_cat_data = require("./content_catModel.js")(sequelize, Sequelize);
 
 module.exports = db;

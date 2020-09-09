@@ -141,6 +141,8 @@ app.post('/send', (req, res, next) => {
 
 require("./app/routes/userRoutes")(app);
 require("./app/routes/dailystockRoutes")(app);
+require("./app/routes/contentRoutes")(app);
+require("./app/routes/content_catRoutes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
