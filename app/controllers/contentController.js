@@ -68,6 +68,29 @@ exports.create = (req, res) => {
     });
 };
 
+exports.findByCat = (req, res) => {
+  console.log('We are in ALL contents by CAT');
+
+  // chuyen thanh keyword noi chung, khong con tim theo NAME ma thoi
+  // const search_keyword = req.query.search_keyword;
+  const search_keyword = req.params.id;
+
+  // Content_data.destroy({
+  //   where: { id: id }
+  // })
+
+  Content_data.findAll({ where: { content_cat_id: search_keyword } })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving daily stock transaction."
+      });
+    });
+};
+
 // Retrieve all transaction from the database - khong su dung vi can su dung paginition: findAllAndCount
 exports.findAll = (req, res) => {
   console.log('We are in ALL contents');
@@ -96,7 +119,7 @@ exports.findAll = (req, res) => {
 
 // Retrieve all Contents from the database and count All
 exports.findAndCountAll = (req, res) => {
-  console.log('hihihi we are here daily stock tranactioni count all');
+  console.log('hihihi we are here CONTENT findandcount all');
   let limit = 15;   // number of records per page
   let offset = 0;
   
@@ -107,7 +130,7 @@ exports.findAndCountAll = (req, res) => {
   {
     [Op.or]: [
       {subject: { [Op.like]: `%${search_keyword}%`} }, 
-      {c_body: { [Op.like]: `%${search_keyword}%`} }]
+      {content_cat_id: { [Op.eq]: search_keyword} }]
   } : null;
 
   Content_data.findAndCountAll({ where: condition, order: [['id', 'DESC']] })

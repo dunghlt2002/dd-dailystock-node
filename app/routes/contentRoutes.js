@@ -21,6 +21,9 @@ module.exports = app => {
     // Create a new Tutorial - ok
     router.post("/content", contents.create);
 
+    // Retrieve all contents findByCat
+    router.get("/contentsbycat/:id", contents.findByCat);
+
     // Retrieve all contents - khong xai ma kem theo searchKeyword phia duoi
     router.get("/contents", contents.findAll);
 
