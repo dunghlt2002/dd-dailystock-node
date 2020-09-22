@@ -30,8 +30,8 @@ module.exports = app => {
     // Retrieve all users paginition
     // router.get("/users/:currentPage", users.findAndCountAll);
     
-    // Retrieve a single Tutorial with id to VERIFY
-    router.get("/userverify/:id", users.verify);
+    // Retrieve a single Tutorial with user and email to VERIFY - forgot pass feature
+    router.get("/forgotpassword/:user_keyword", users.findByNameEmail);
 
     // Retrieve a single user with id
     router.get("/user/:id", users.findOne);

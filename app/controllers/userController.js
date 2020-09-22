@@ -5,22 +5,6 @@ const Op = db.Sequelize.Op;
 const jwt = require('jsonwebtoken');
 const utils = require('../utils');
 
-// verifying 07162020 - khong xai nua 0717
-exports.verify = async (req, res) => {
-  
-  const checktoken = req.headers.authorization;
-  const user = req.params.id
-
-  console.log('hihihi we are here verifying ' + user);
-
-  const isVerified = utils.tokenverify(user, checktoken);
-  console.log('isverify: ' + isVerified);
-  res.send(true);
-     
-};
-
-
-
 // signin 07112020
 exports.signin = async (req, res) => {
   
@@ -81,6 +65,55 @@ exports.create = (req, res) => {
     });
 };
 
+// Retrieve User from the database with username and email - use for ForgptPassword feature
+exports.findByNameEmail = async (req, res) => {
+
+  // chuyen thanh keyword noi chung, khong con tim theo NAME ma thoi
+  const email_keyword = req.query.email_keyword;
+  const user_keyword = req.params.user_keyword;
+
+  console.log('hihihi we are here forgotPASS verify: ' + user_keyword + " - " + email_keyword);
+
+  // var condition = user_keyword ? 
+  // {
+  //   [Op.and]: [
+  //     {user: { [Op.eq]: `${user_keyword}`} },
+  //     {email: { [Op.eq]: `${email_keyword}`} }
+  //   ]
+  // } : null;
+
+
+  const userSelect = await User_data.findOne({ where: {user: user_keyword, email: email_keyword} });
+
+  if (userSelect) {
+          res.send({
+              id: userSelect.id,
+              user: userSelect.user,
+              email: userSelect.email,
+              resettoken: utils.generateToken(userSelect)
+          });
+          console.log('data return trong backend ' + userSelect.user);
+  } else {
+    res.status(401).send({ error: 'Invalid Email or UserName.' });
+  }
+
+
+  // User_data.findAll({ where: condition })
+  //   .then(data => {
+  //     res.send(data);
+  //       console.log('a: ' + data[0].id);
+  //       console.log('a: ' + data[0].user);
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send({
+  //       message:
+  //         err.message || "Some error occurred while retrieving users."
+  //     });
+  //   });
+
+};
+
+
 // Retrieve all Users from the database.
 exports.findAll = (req, res) => {
   console.log('hihihi we are here ALL users');
@@ -135,8 +168,8 @@ exports.findAndCountAll = (req, res) => {
       User_data.findAll({ where: condition ,limit: limit,offset: offset})
       .then(data => {
         // const response = getPagingData(data, page, limit);
-        console.log('a: ' + data[0].id);
-        console.log('a: ' + data[0].user);
+        // console.log('a: ' + data[0].id);
+        // console.log('a: ' + data[0].user);
         
         res.send({'data': data, 'pages': pages});
         

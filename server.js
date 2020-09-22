@@ -110,9 +110,11 @@ transporter.verify((error, success) => {
   }
 });
 
-// xu ly phan mail function
+
 app.use(express.json()); 
-app.post('/send', (req, res, next) => {
+
+// xu ly phan mail function: sendAddNewUser
+app.post('/sendAddNewUser', (req, res, next) => {
   const name = req.body.name
   const email = req.body.email
   const message = req.body.messageHtml
@@ -138,6 +140,36 @@ app.post('/send', (req, res, next) => {
     }
   })
 })
+
+
+// xu ly phan mail function: sendAddNewuser
+app.post('/sendForgotPassword', (req, res, next) => {
+  const name = req.body.name
+  const email = req.body.email
+  const message = req.body.messageHtml
+
+
+  var mail = {
+    from: name,
+    to: email,  
+    subject: 'Remind to change password, from thekystore.com',
+
+    html: message
+  }
+
+  transporter.sendMail(mail, (err, data) => {
+    if (err) {
+      res.json({
+        msg: 'fail'
+      })
+    } else {
+      res.json({
+        msg: 'success'
+      })
+    }
+  })
+})
+
 
 require("./app/routes/userRoutes")(app);
 require("./app/routes/dailystockRoutes")(app);
