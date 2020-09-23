@@ -143,7 +143,7 @@ app.post('/sendAddNewUser', (req, res, next) => {
 
 
 // xu ly phan mail function: sendAddNewuser
-app.post('/sendForgotPassword', (req, res, next) => {
+app.post('./sendForgotPassword', (req, res, next) => {
   const name = req.body.name
   const email = req.body.email
   const message = req.body.messageHtml
