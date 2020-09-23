@@ -31,7 +31,7 @@ module.exports = app => {
     // router.get("/users/:currentPage", users.findAndCountAll);
     
     // Retrieve a single Tutorial with user and email to VERIFY - forgot pass feature
-    router.get("/forgotpassword/:user_keyword", users.findByNameEmail);
+    router.post("/forgotpassword/:user_keyword", users.findByNameEmail);
 
     // Retrieve a single user with id
     router.get("/user/:id", users.findOne);
